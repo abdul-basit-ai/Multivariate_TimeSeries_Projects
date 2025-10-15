@@ -1,3 +1,23 @@
+#  Granite Timeseries For Energy Demand Forecasting
+
+This project demonstrates few-shot fine-tuning of the TinyTimeMixer (TTM) model from IBM's Granite-Time Series foundation model family. TTM is a compact, pre-trained model optimized for Multivariate Time-Series Forecasting.
+The goal is to forecast energy demand—specifically total load actual and generation solar—using historical consumption data from Spain, incorporating exogenous weather features for improved accuracy.
+
+Model: TinyTimeMixer (TTM) from ibm-granite/granite-timeseries-ttm-r2.
+Technique: Few-shot fine-tuning on $\mathbf{5\%}$ of the training data.
+Dataset: Hourly energy consumption and weather data for Spain.
+Multivariate Input: Forecasts two target variables simultaneously, incorporating 10 exogenous weather features.
+
+Data Preparation
+The script combines two datasets: hourly energy consumption and detailed weather features across Spanish cities.
+Exogenous Data Processing: Weather data is aggregated by calculating a 24-hour rolling average, followed by the median across all cities, yielding country-level weather forecasts (e.g., temp, pressure, humidity).
+Missing Values: Forward fill (ffill) is used to handle missing values in the target series.
+Data Splitting: The final dataset is chronologically split:
+
+After fine-tuning, the TimeSeriesForecastingPipeline is used to:
+Evaluate: Generate predictions on the held-out $\mathbf{20\%}$ test set, evaluating performance using standard time-series metrics (MSE, RMSE, MAE).
+Simulate Real-World Forecast: Use the last 512 historical observations and the known future values of the 10 control (weather) variables to predict the next 96 hours of energy load and solar 
+
 # Multivariate_TimeSeries_Forecast
 This notebooke demonstrates the usage of a pre-trained TinyTimeMixer model for several multivariate time series forecasting tasks. 
 In this project I used a pre-trained TinyTimeMixer model for several multivariate time series forecasting tasks.The TTM model can take an input of 512 time points (context_length), and can forecast upto 96 time points (forecast_length) in the future. We will use the pre-trained TTM in two settings:
