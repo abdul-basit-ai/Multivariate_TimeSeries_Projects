@@ -19,8 +19,10 @@ Evaluate: Generate predictions on the held-out $\mathbf{20\%}$ test set, evaluat
 Simulate Real-World Forecast: Use the last 512 historical observations and the known future values of the 10 control (weather) variables to predict the next 96 hours of energy load and solar 
 ## Data
 <img width="1623" height="294" alt="image" src="https://github.com/user-attachments/assets/514be48c-8564-4619-a28b-4630baf7805b" />
+
 ## Prediction
 <img width="989" height="789" alt="image" src="https://github.com/user-attachments/assets/a49527f3-8ab2-4452-b8ac-5cb8f1ceb8c3" />
+
 ## Forecast
 <img width="987" height="190" alt="image" src="https://github.com/user-attachments/assets/82b7b5d4-edec-4c63-a472-3659aa787872" />
 
